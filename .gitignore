@@ -1,0 +1,43 @@
+# Environment variables
+.env
+.env.local
+
+# Data (track sample files and structure, ignore large raw dumps)
+data/*
+!data/.gitkeep
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+build/
+dist/
+wheels/
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Testing & Linting
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# XeLaTeX intermediate files (keep .tex, .bib, .pdf, images)
+report/*.aux
+report/*.bbl
+report/*.blg
+report/*.log
+report/*.out
+report/*.toc
+report/*.lof
+report/*.lot
+report/*.synctex.gz
+report/*.fls
+report/*.fdb_latexmk
+
