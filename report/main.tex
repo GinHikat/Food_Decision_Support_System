@@ -101,7 +101,7 @@
 % ---------------- TRANG BÌA ----------------
 \begin{titlepage}
     \thispagestyle{empty}
-    % Khung đôi viền trang bìa chuyên nghiệp
+    % Khung đôi viền trang bìa
     \begin{tikzpicture}[remember picture, overlay]
         % Khung ngoài (Nét đậm - 2.0pt)
         \draw[line width=2.0pt, color=black] 
@@ -141,21 +141,19 @@
     {\Large Đề tài:\par}
     \vspace{0.2cm}
     {\LARGE\bfseries ``Hệ Hỗ Trợ Ra Quyết Định Tối Ưu Hóa\\Thực Đơn Nhà Hàng''\par}
-    \vspace{0.2cm}
-    {\large\textit{Khung Phân Tích Dựa Trên Dữ Liệu Cho Kỹ Thuật Thực Đơn (Menu Engineering), Mô Hình Hóa Mức Độ Phổ Biến -- Lợi Nhuận Và Tối Ưu Hóa Đa Tiêu Chí}\par}
     
     \vspace{0.8cm}
     
     % Danh sách thành viên nhóm
-    {\Large Sinh viên thực hiện: Nhóm [Số]\par}
+    {\Large Nhóm 1\par}
     \vspace{0.2cm}
     \begin{tabular}{lll}
         \textbf{Họ và tên} & \textbf{Mã số sinh viên} & \textbf{Vai trò / Phân công} \\
         \midrule
-        [Tên sinh viên 1] & [MSSV 1] & Kiến trúc hệ thống \& Mô hình DSS \\
-        [Tên sinh viên 2] & [MSSV 2] & Pipeline dữ liệu \& Động cơ phân tích \\
-        [Tên sinh viên 3] & [MSSV 3] & Phát triển ứng dụng Demo \& Đánh giá \\
-        [Tên sinh viên 4] & [MSSV 4] & Tài liệu báo cáo \& Thử nghiệm đối sánh \\
+        [Tên sinh viên 1] & [MSSV 1] & [Nhiệm vụ 1] \\
+        [Tên sinh viên 2] & [MSSV 2] & [Nhiệm vụ 2] \\
+        [Tên sinh viên 3] & [MSSV 3] & [Nhiệm vụ 3] \\
+        [Tên sinh viên 4] & [MSSV 4] & [Nhiệm vụ 4] \\
         \bottomrule
     \end{tabular}\par
     
@@ -173,22 +171,14 @@
 
 \newpage
 \section*{Lời Cảm Ơn}
-Báo cáo bài tập lớn này được hoàn thành trong khuôn khổ học phần \textbf{Hệ hỗ trợ ra quyết định (Decision Support System)} tại Trường Công nghệ Thông tin và Truyền thông, Đại học Bách khoa Hà Nội (HUST).
-
-Nhóm chúng em xin gửi lời cảm ơn chân thành và sâu sắc nhất tới thầy/cô giảng viên phụ trách học phần, [Tên Giảng viên], người đã tận tình truyền đạt những kiến thức quý báu, định hướng nghiên cứu và đóng góp những ý kiến phản biện sâu sắc trong suốt quá trình nhóm lên ý tưởng, xây dựng mô hình và hoàn thiện sản phẩm nguyên mẫu.
-
-Nhóm cũng xin cảm ơn các bạn sinh viên trong lớp đã chia sẻ những góc nhìn học thuật hữu ích và hỗ trợ thảo luận trong suốt thời gian học tập và nghiên cứu đề tài này.
+\textit{[Phần trình bày lời cảm ơn tới giảng viên hướng dẫn, bộ môn và những người hỗ trợ hoàn thành đề tài.]}
 
 \newpage
 \begin{abstract}
-Trong ngành dịch vụ ẩm thực và nhà hàng (F\&B), việc quản lý và thiết kế thực đơn đóng vai trò sống còn đối với sự phát triển bền vững và biên lợi nhuận của doanh nghiệp. Tuy nhiên, trên thực tế, các quyết định điều chỉnh thực đơn, định giá món ăn hoặc cơ cấu lại danh mục nguyên liệu phần lớn vẫn dựa vào cảm tính cá nhân của bếp trưởng hoặc báo cáo doanh thu thô theo cách thủ công. Điều này thường dẫn đến tình trạng định giá dưới mức tối ưu, tỷ lệ lãng phí tồn kho cao và bỏ lỡ cơ hội đẩy mạnh các món ăn có biên lợi nhuận lớn.
-
-Đề tài này nghiên cứu và phát triển \textbf{Hệ hỗ trợ ra quyết định tối ưu hóa thực đơn nhà hàng (Restaurant Menu Decision Support System -- Menu-DSS)}, một khung hỗ trợ ra quyết định toàn diện dựa trên dữ liệu nhằm hỗ trợ các nhà quản lý nhà hàng phân tích, phân loại và đưa ra chiến lược tối ưu cho từng món ăn. Hệ thống tích hợp lý thuyết \textit{Kỹ thuật thực đơn (Menu Engineering)} kinh điển của Kasavana \& Smith với các phương pháp \textit{Ra quyết định đa tiêu chí (MCDM)} hiện đại (bao gồm mô hình AHP và chấm điểm trọng số chuẩn hóa), qua đó phân loại các món ăn vào 4 góc phần tư chiến lược: \textit{Ngôi sao (Stars)}, \textit{Ngựa thồ (Plowhorses)}, \textit{Ẩn số (Puzzles)}, và \textit{Gánh nặng (Dogs)}. Dựa trên kết quả định vị, hệ thống tự động sinh các khuyến nghị hành động mang tính dự báo và chỉ dẫn (prescriptive recommendations) về chiến lược giá, combo khuyến mãi và kiểm soát khẩu phần.
-
-Nguyên mẫu ứng dụng thực tế được phát triển hoàn chỉnh bằng ngôn ngữ Python, có khả năng nạp dữ liệu POS tự động, tính toán chỉ số nhanh chóng và cung cấp giao diện trực quan hỗ trợ quản trị viên. Kết quả thử nghiệm mô phỏng trên tập dữ liệu vận hành thực tế chứng minh rằng Menu-DSS giúp nhận diện chính xác các điểm rò rỉ lợi nhuận, cải thiện biên lợi nhuận gộp giả lập mà vẫn duy trì mức độ hài lòng cao của thực khách.
+\textit{[Tóm tắt ngắn gọn mục tiêu bài toán, mô hình DSS áp dụng, phương pháp thực nghiệm và các kết quả chính đạt được.]}
 
 \vspace{0.8em}
-\textbf{Từ khóa}: Hệ hỗ trợ ra quyết định (DSS), Kỹ thuật thực đơn (Menu Engineering), Ma trận Kasavana--Smith, Ra quyết định đa tiêu chí (MCDM), Quản trị doanh thu nhà hàng.
+\textbf{Từ khóa}: \textit{[Điền các từ khóa chính của đề tài, ví dụ: Hệ hỗ trợ ra quyết định (DSS), AHP, TOPSIS, Tối ưu thực đơn, ...]}
 \end{abstract}
 
 \newpage
@@ -211,133 +201,76 @@ Nguyên mẫu ứng dụng thực tế được phát triển hoàn chỉnh bằ
 DSS & Hệ hỗ trợ ra quyết định (Decision Support System) \\
 MCDM & Ra quyết định đa tiêu chí (Multi-Criteria Decision Making) \\
 AHP & Phương pháp phân tích thứ bậc (Analytic Hierarchy Process) \\
-TOPSIS & Phương pháp xếp hạng theo mức độ tương đồng với giải pháp lý tưởng \\
-CM & Biên đóng góp / Lợi nhuận gộp từng món (Contribution Margin) \\
-MM & Tỷ trọng cơ cấu thực đơn / Mức độ phổ biến (Menu Mix) \\
-POS & Hệ thống điểm bán hàng (Point of Sale) \\
-ROI & Tỷ suất hoàn vốn đầu tư (Return on Investment) \\
-F\&B & Ngành công nghiệp thực phẩm và đồ uống (Food and Beverage) \\
-KPI & Chỉ số đánh giá hiệu quả công việc (Key Performance Indicator) \\
+TOPSIS & Kỹ thuật sắp xếp thứ tự ưu tiên theo độ tương đồng với giải pháp lý tưởng \\
+CR & Tỷ số nhất quán (Consistency Ratio) \\
+CI & Chỉ số nhất quán (Consistency Index) \\
+RI & Chỉ số ngẫu nhiên (Random Index) \\
 \hline
 \end{tabular}
 \end{table}
 
 \newpage
 
-\section{Giới Thiệu và Đặt Vấn Đề}
+% ==============================================================================
+% CHƯƠNG 1
+% ==============================================================================
+\section{Tổng Quan và Đặt Vấn Đề}
 
-\subsection{Bối Cảnh và Động Lực Nghiên Cứu}
-Ngành dịch vụ ăn uống và nhà hàng hiện đại đang đối mặt với sự cạnh tranh gay gắt, chi phí nguyên liệu đầu vào biến động thất thường và xu hướng thị hiếu của khách hàng thay đổi nhanh chóng. Trong hệ sinh thái vận hành của một nhà hàng, thực đơn (menu) không chỉ là ấn phẩm giới thiệu món ăn mà còn là công cụ tiếp thị trực tiếp, công cụ định giá và là nền tảng điều phối toàn bộ chuỗi cung ứng nguyên vật liệu nhà bếp.
+\subsection{Bối Cảnh Thực Tế}
+\textit{[Mô tả bài toán cần giải quyết, bối cảnh thực tiễn kinh doanh/vận hành, các khó khăn và thách thức hiện tại khi ra quyết định mà chưa có hệ thống hỗ trợ.]}
 
-Mặc dù giữ vai trò trung tâm, việc quản lý và đánh giá thực đơn tại nhiều cơ sở kinh doanh F\&B hiện nay vẫn phụ thuộc nhiều vào thói quen, cảm tính hoặc được tổng kết thụ động thông qua các bảng tính Excel rời rạc vào cuối mỗi chu kỳ kinh doanh. Ban quản lý nhà hàng thường thiếu các công cụ phân tích có khả năng tổng hợp đồng thời nhiều chiều thông tin: giá thành cấu thành món (food cost), độ phức tạp trong chế biến, tốc độ luân chuyển đơn hàng và phản hồi định lượng từ thực khách.
+\subsection{Mục Tiêu và Phạm Vi}
+\textit{[Xác định rõ hệ thống sẽ hỗ trợ người dùng ra quyết định ở những khía cạnh nào, đối tượng hưởng lợi và giới hạn phạm vi dữ liệu/nghiệp vụ của đề tài.]}
 
-Từ thực tiễn trên, việc phát triển một **Hệ hỗ trợ ra quyết định (DSS)** chuyên biệt cho bài toán tối ưu hóa thực đơn nhà hàng là một nhu cầu cấp thiết. Hệ thống này giúp các nhà quản trị chuyển đổi phương thức ra quyết định từ phản ứng thụ động sang điều hành chủ động dựa trên dữ liệu.
+\subsection{Kiến Trúc Tổng Thể DSS}
+\textit{[Mô tả sơ đồ và chức năng của 3 thành phần cốt lõi trong hệ hỗ trợ ra quyết định: (1) Quản trị dữ liệu (Data Management), (2) Quản trị mô hình (Model Management) và (3) Giao diện người dùng (User Interface).]}
 
-\subsection{Phát Biểu Bài Toán và Mục Tiêu}
-Dựa trên nguồn dữ liệu giao dịch từ hệ thống máy tính tiền POS, định mức nguyên liệu công thức món ăn (BOM), thời gian chế biến trung bình và điểm số đánh giá từ khách hàng, mục tiêu nghiên cứu của đề tài gồm:
-\begin{enumerate}
-    \item Theo dõi và tính toán tự động biên đóng góp lợi nhuận ($CM_i$) và chỉ số phổ biến ($MM_i$) của từng món ăn trong danh mục.
-    \item Phân loại chính xác các món ăn vào ma trận chiến lược gồm 4 nhóm (\textit{Stars, Plowhorses, Puzzles, Dogs}) theo mô hình Kasavana \& Smith \cite{kasavana1982menu} và Miller \cite{miller1987menu}.
-    \item Áp dụng mô hình chấm điểm đa tiêu chí (MCDM) để cân bằng giữa lợi ích kinh tế (lợi nhuận, doanh thu) và yếu tố vận hành (thời gian chế biến, độ thỏa mãn của thực khách).
-    \item Đưa ra các khuyến nghị hành động chiến lược cụ thể, rõ ràng và dễ áp dụng cho nhà quản lý.
-\end{enumerate}
+% ==============================================================================
+% CHƯƠNG 2
+% ==============================================================================
+\section{Cơ Sở Lý Thuyết}
 
-\subsection{Phạm Vi và Đóng Góp của Đề Tài}
-Các đóng góp chính của đề tài bao gồm:
-\begin{itemize}
-    \item Thiết kế kiến trúc tổng thể cho Hệ hỗ trợ ra quyết định thực đơn nhà hàng.
-    \item Xây dựng công thức toán học và mô hình thuật toán kết hợp giữa kỹ thuật thực đơn truyền thống và phương pháp tối ưu hóa đa tiêu chí.
-    \item Phát triển nguyên mẫu phần mềm hoàn chỉnh bằng Python, cho phép thực thi thử nghiệm nhanh chóng thông qua lệnh \texttt{uv run dev}.
-    \item Soạn thảo tài liệu báo cáo học thuật đầy đủ, cung cấp cơ sở lý thuyết và minh chứng thử nghiệm định lượng.
-\end{itemize}
+\subsection{Khái Niệm Liên Quan}
+\textit{[Trình bày ngắn gọn các lý thuyết nền tảng về hệ trợ giúp quyết định (DSS), bài toán ra quyết định đa tiêu chí (MCDM) hoặc các khái niệm khai phá dữ liệu/học máy liên quan.]}
 
-\section{Cơ Sở Lý Thuyết và Tổng Quan Nghiên Cứu}
+\subsection{Thuật Toán Áp Dụng}
+\textit{[Giải thích nguyên lý hoạt động, cơ sở toán học, công thức tính toán và các bước thực hiện chi tiết của phương pháp nhóm lựa chọn (ví dụ: AHP, TOPSIS, ELECTRE hoặc các thuật toán Machine Learning).]}
 
-\subsection{Tổng Quan về Hệ Hỗ Trợ Ra Quyết Định (DSS)}
-Theo Power \cite{power2002decision}, Hệ hỗ trợ ra quyết định (DSS) là hệ thống thông tin tương tác trên máy tính, có chức năng tích hợp dữ liệu nghiệp vụ, mô hình phân tích định lượng và tri thức chuyên gia nhằm giải quyết các bài toán bán cấu trúc và phi cấu trúc trong quản trị. Trong lĩnh vực dịch vụ khách sạn - nhà hàng, DSS đóng vai trò then chốt trong quản trị doanh thu (revenue management) và tối ưu hóa năng suất phục vụ \cite{kimes1998restaurant}.
+% ==============================================================================
+% CHƯƠNG 3
+% ==============================================================================
+\section{Phân Tích và Xây Dựng Mô Hình}
 
-\subsection{Phương Pháp Kỹ Thuật Thực Đơn (Menu Engineering)}
-Mô hình kỹ thuật thực đơn được khởi xướng bởi Kasavana và Smith \cite{kasavana1982menu}, sử dụng ma trận $2 \times 2$ dựa trên hai trục chính:
-\begin{itemize}
-    \item \textbf{Biên đóng góp (Contribution Margin - CM)}: Phản ánh khả năng sinh lời trên mỗi đơn vị bán ra so với mức biên lợi nhuận trung bình của toàn thực đơn.
-    \item \textbf{Tỷ trọng phổ biến (Menu Mix - MM)}: Tỷ lệ phần trăm số lượng bán của món ăn so với tổng sản lượng bán ra của toàn danh mục.
-\end{itemize}
+\subsection{Thu Thập và Tiền Xử Lý Dữ Liệu}
+\textit{[Mô tả chi tiết nguồn dữ liệu, các thuộc tính (tiêu chí đánh giá), quy trình làm sạch dữ liệu, xử lý giá trị ngoại lai, giá trị khuyết thiếu và các bước chuẩn hóa dữ liệu.]}
 
-Bốn nhóm phân loại chiến lược gồm:
-\begin{enumerate}
-    \item \textbf{Ngôi sao (Stars)} (CM cao, MM cao): Món ăn vừa bán chạy vừa có biên lợi nhuận lớn. Chiến lược: Giữ nguyên vị trí nổi bật trên thực đơn, duy trì nghiêm ngặt chất lượng và định lượng nguyên liệu.
-    \item \textbf{Ngựa thồ (Plowhorses)} (CM thấp, MM cao): Món ăn được khách hàng gọi nhiều nhưng biên lợi nhuận thấp. Chiến lược: Tăng giá nhẹ có lộ trình, tối ưu hóa công thức nguyên liệu hoặc bán kèm (bundle) với các món phụ có biên lợi nhuận cao.
-    \item \textbf{Ẩn số (Puzzles)} (CM cao, MM thấp): Món ăn có lợi nhuận cao nhưng lượng gọi ít. Chiến lược: Đẩy mạnh quảng bá, đào tạo nhân viên phục vụ gợi ý món (upselling), hoặc đổi tên gọi/hình ảnh hấp dẫn hơn.
-    \item \textbf{Gánh nặng (Dogs)} (CM thấp, MM thấp): Món ăn vừa bán ế vừa sinh lời kém. Chiến lược: Cân nhắc loại bỏ khỏi thực đơn hoặc tái cấu trúc toàn diện về nguyên liệu và giá bán.
-\end{enumerate}
+\subsection{Thiết Kế Mô Hình Ra Quyết Định}
+\textit{[Xây dựng cấu trúc mô hình ra quyết định: cây phân cấp tiêu chí (nếu sử dụng phương pháp AHP), xác định ma trận so sánh cặp, gán trọng số cho từng tiêu chí, hoặc thiết lập kiến trúc mô hình học máy tương ứng.]}
 
-\subsection{Phương Pháp Ra Quyết Định Đa Tiêu Chí (MCDM)}
-Trong thực tế quản hành, nếu chỉ tối ưu hóa đơn tiêu chí lợi nhuận thì có thể dẫn tới những tác động tiêu cực, chẳng hạn như dồn tải gây quá tải bếp (thời gian chế biến quá lâu) hoặc làm giảm điểm đánh giá của khách hàng. Do đó, các phương pháp Ra quyết định đa tiêu chí như AHP của Saaty \cite{saaty1980analytic} hoặc TOPSIS \cite{hwang1981multiple, tzeng2011multiple} được áp dụng để tổng hợp đồng thời nhiều chỉ số:
-\begin{itemize}
-    \item Biên đóng góp lợi nhuận trên mỗi suất
-    \item Sản lượng và doanh thu tổng
-    \item Mức độ hài lòng của khách hàng (Rating)
-    \item Mức độ thuận tiện và thời gian chế biến của bộ phận bếp
-\end{itemize}
+% ==============================================================================
+% CHƯƠNG 4
+% ==============================================================================
+\section{Cài Đặt Thực Nghiệm và Đánh Giá Kết Quả}
 
-\section{Kiến Trúc Hệ Thống và Phương Pháp Xây Dựng Mô Hình}
+\subsection{Môi Trường và Công Cụ}
+\textit{[Liệt kê môi trường phát triển, ngôn ngữ lập trình (Python, R), các thư viện phụ thuộc hoặc công cụ trực quan hóa dữ liệu được sử dụng (Streamlit, Power BI, Excel, Dash).]}
 
-\subsection{Kiến Trúc Tổng Thể}
-Hệ thống Menu-DSS được xây dựng theo mô hình phân tầng ba lớp:
-\begin{enumerate}
-    \item \textbf{Tầng Thu thập và Tiền xử lý Dữ liệu}: Đọc và làm sạch dữ liệu hóa đơn POS, định mức chi phí nguyên vật liệu, giá bán và đánh giá phản hồi từ thực khách.
-    \item \textbf{Tầng Động cơ DSS và Tính toán Chỉ số}: Thực hiện tính toán các biến số tài chính, áp dụng thuật toán ma trận Kasavana--Smith và tính điểm hữu dụng đa tiêu chí MCDM.
-    \item \textbf{Tầng Giao diện Chỉ dẫn và Khuyến nghị}: Xuất bảng tổng hợp phân loại, đưa ra khuyến nghị hành động tương ứng cho từng nhóm món ăn và biểu diễn trực quan.
-\end{enumerate}
+\subsection{Giao Diện và Luồng Hoạt Động}
+\textit{[Mô tả luồng tương tác của người dùng với hệ thống và chèn các hình ảnh minh họa màn hình ứng dụng/dashboard thực tế trong quá trình thử nghiệm.]}
 
-\subsection{Mô Hình Toán Học và Công Thức Tính}
-Gọi $N$ là tổng số lượng món ăn trong thực đơn cần khảo sát. Với mỗi món ăn thứ $i \in \{1, \dots, N\}$:
-\begin{align}
-    CM_i &= P_i - C_i \\
-    \overline{CM} &= \frac{\sum_{i=1}^N (CM_i \times Q_i)}{\sum_{i=1}^N Q_i} \\
-    MM_i (\%) &= \frac{Q_i}{\sum_{j=1}^N Q_j} \times 100\% \\
-    MM_{\text{ngưỡng}} &= \frac{1}{N} \times 70\%
-\end{align}
-trong đó:
-\begin{itemize}
-    \item $P_i$: Giá bán niêm yết của món ăn thứ $i$.
-    \item $C_i$: Giá vốn thành phần nguyên liệu (Cost of Goods Sold) của món ăn thứ $i$.
-    \item $Q_i$: Tổng sản lượng tiêu thụ của món ăn thứ $i$ trong kỳ khảo sát.
-    \item $\overline{CM}$: Biên đóng góp lợi nhuận trung bình có trọng số của toàn bộ thực đơn.
-    \item $MM_{\text{ngưỡng}}$: Ngưỡng phổ biến phân định (thường lấy bằng $70\%$ của tỷ trọng chia đều $1/N$).
-\end{itemize}
+\subsection{Đánh Giá và Kiểm Thử}
+\textit{[Phân tích kết quả đầu ra của hệ thống: kiểm tra tỷ số nhất quán ($CR$) đối với mô hình AHP, đánh giá các độ đo chính xác đối với mô hình ML, hoặc thực hiện phân tích độ nhạy (Sensitivity Analysis) khi trọng số tiêu chí thay đổi.]}
 
-\section{Hiện Thực Hóa Nguyên Mẫu và Thử Nghiệm}
-
-\subsection{Công Nghệ Triển Khai}
-Nguyên mẫu phần mềm được xây dựng với ngăn xếp công nghệ:
-\begin{itemize}
-    \item \textbf{Ngôn ngữ lập trình}: Python $\ge$ 3.10
-    \item \textbf{Công cụ quản lý gói \& thực thi}: \texttt{uv} (môi trường ảo và runner tốc độ cao)
-    \item \textbf{Thư viện tính toán \& hiển thị}: \texttt{pandas}, \texttt{numpy}, \texttt{tabulate}, \texttt{matplotlib}
-    \item \textbf{Giao diện Demo tương tác}: Bảng điều khiển dòng lệnh hỗ trợ phân tích tức thì và xuất khuyến nghị hành động tự động.
-\end{itemize}
-
-\subsection{Hướng Dẫn Chạy Thử Nghiệm Nguyên Mẫu}
-Người dùng có thể khởi chạy nguyên mẫu nhanh chóng bằng lệnh:
-\begin{lstlisting}[language=bash]
-# Chay demo thong qua cong cu uv
-uv run dev
-
-# Hoac chay truc tiep bang Python
-python demo/main.py
-\end{lstlisting}
-
-\section{Đánh Giá Kết Quả và Thảo Luận}
-Thử nghiệm trên bộ dữ liệu thực đơn gồm các món khai vị, món chính, đồ tráng miệng và đồ uống cho thấy hệ thống:
-\begin{enumerate}
-    \item Tách bạch rõ ràng các món thuộc nhóm \textit{Ngôi sao} (như Margherita Pizza, Wagyu Burger) để ưu tiên giữ vững chất lượng.
-    \item Phát hiện chính xác các món \textit{Ngựa thồ} có lượng khách gọi áp đảo nhưng biên lợi nhuận còn mỏng, từ đó đề xuất điều chỉnh định lượng hoặc giá bán.
-    \item Cung cấp điểm số xếp hạng đa tiêu chí DSS trực quan, giúp nhà quản lý nhanh chóng đưa ra quyết định mà không cần thao tác thủ công phức tạp.
-\end{enumerate}
-
+% ==============================================================================
+% CHƯƠNG 5
+% ==============================================================================
 \section{Kết Luận và Hướng Phát Triển}
-Đề tài đã hoàn thành việc xây dựng cơ sở lý thuyết, kiến trúc hệ thống và phiên bản thử nghiệm nguyên mẫu cho Hệ hỗ trợ ra quyết định thực đơn nhà hàng. Trong tương lai, nhóm nghiên cứu dự kiến sẽ tích hợp các thuật toán học máy nhằm dự báo nhu cầu tiêu thụ theo mùa và liên kết trực tiếp dữ liệu thông qua API của các hệ thống POS điện toán đám mây.
+
+\subsection{Kết Quả Đạt Được}
+\textit{[Tóm tắt các kết quả đạt được của đề tài, những ưu điểm nổi bật và tính hữu ích thực tiễn của hệ thống hỗ trợ ra quyết định đã xây dựng.]}
+
+\subsection{Hạn Chế và Hướng Mở Rộng}
+\textit{[Nêu rõ các điểm hạn chế chưa tối ưu (ví dụ: kích thước tập dữ liệu còn nhỏ, chưa cập nhật dữ liệu theo thời gian thực) và đề xuất các hướng cải tiến, mở rộng hệ thống trong tương lai.]}
 
 \newpage
 \bibliographystyle{plain}
