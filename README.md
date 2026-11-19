@@ -34,27 +34,55 @@ In restaurant management, menu items vary widely in ingredient cost, preparation
 ```plaintext
 Decision_Support/
 ├── data/
-│   ├── .gitkeep
-├── demo/
+│   ├── raw/                        # Raw source datasets (menu, sales, food items)
+│   ├── processed/
+│   │   ├── menu_dss_master.csv     # Unified 39-dish master dataset (22 columns)
+│   │   ├── customers.csv           # 20 customer profiles (diet, allergies, preferences)
+│   │   ├── dining_sessions.csv     # 30 contextual meal sessions
+│   │   ├── customer_sessions_master.csv # Joined customer + session context view
+│   │   └── data_desc.md            # Detailed dataset schema documentation (Vietnamese)
+│   ├── combine/                    # Intermediate combined data assets
+│   └── .gitkeep
+├── demo/                           # Interactive Web Demo (React + Vite + Tailwind CSS)
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── RadarChart.jsx      # 4-axis Spider chart comparing Option A/B/C/D
+│   │   │   ├── RestaurantMenuModal.jsx # Full 39-dish searchable menu viewer
+│   │   │   └── ScenarioDetailModal.jsx # Full dish breakdown modal for selected option
+│   │   ├── data/
+│   │   │   └── dssData.json        # Exported menu & session data for web demo
+│   │   ├── utils/
+│   │   │   └── dssEngine.js        # Hard filters, TOPSIS engine & 4-scenario composer
+│   │   ├── App.jsx                 # Main interactive web interface
+│   │   ├── index.css               # Fresh Organic theme styles & Tailwind v4
+│   │   └── main.jsx                # React entrypoint
+│   ├── index.html
+│   ├── package.json
+│   └── vite.config.js
+├── docs/
+│   └── PROJECT_SPEC.md             # Problem definition, algorithms & UI specification
+├── modules/                        # Python DSS & Data Pipeline modules
 │   ├── modules/
 │   │   ├── __init__.py
-│   │   ├── menu_analysis.py    # Menu engineering & Kasavana-Smith classification logic
-│   │   └── dss_model.py        # MCDM weighted scoring & utility calculation
-│   └── main.py                 # Interactive prototype CLI entrypoint
+│   │   ├── data_pipeline.py        # ETL pipeline generating processed datasets
+│   │   ├── menu_analysis.py        # Menu engineering & Kasavana-Smith classification
+│   │   └── dss_model.py            # MCDM weighted scoring & utility calculation
+│   └── main.py                     # Python CLI prototype entrypoint
 ├── report/
 │   ├── images/
-│   │   └── .gitkeep            # Figures and diagrams for the formal report
-│   ├── logo.png                # HUST university emblem for report title page
-│   ├── main.tex                # Master XeLaTeX report template
-│   ├── references.bib          # Academic BibTeX citations (DSS, AHP, Menu Engineering)
-│   └── README.md               # XeLaTeX compilation guidelines
+│   │   └── .gitkeep                # Figures and diagrams for the formal report
+│   ├── logo.png                    # HUST university emblem for report title page
+│   ├── main.tex                    # Master XeLaTeX report template (Vietnamese, 5 chapters)
+│   ├── references.bib              # Academic BibTeX citations (DSS, AHP, TOPSIS)
+│   └── README.md                   # XeLaTeX compilation guidelines
 ├── tests/
-│   └── test_menu_analysis.py   # Unit test suite
-├── .gitignore                  # Git exclusions for Python & XeLaTeX build files
-├── constraints.txt             # Pinned dependency constraints for reproducible setup
-├── Makefile                    # Task automation shortcuts
-├── pyproject.toml              # Modern Python PEP 621 configuration & dependencies
-└── README.md                   # Project documentation
+│   └── test_menu_analysis.py       # Unit test suite
+├── .gitignore                      # Git exclusions for Python, Node & XeLaTeX build files
+├── constraints.txt                 # Pinned Python dependency constraints
+├── Makefile                        # Task automation shortcuts
+├── PRODUCT.md                      # Product context & design brief
+├── pyproject.toml                  # Modern Python PEP 621 configuration & dependencies
+└── README.md                       # Project documentation
 ```
 
 ---
@@ -63,6 +91,7 @@ Decision_Support/
 
 ### Prerequisites
 - **Python**: Version >= 3.10 installed.
+- **Node.js & npm**: Node.js >= 18 and npm (required for the interactive web demo in `demo/`).
 - **uv** (Recommended): A fast Python package manager and project runner ([Installation Guide](https://github.com/astral-sh/uv)).
   ```bash
   # Windows (PowerShell)
@@ -120,16 +149,30 @@ pip install -e . -c constraints.txt
 
 ## Running the Prototype Demo
 
-### Quick Run via `uv run dev`
-Once inside the project directory, run:
+### 1. Interactive Web Demo (React + Vite + Tailwind CSS in `demo/`)
+Make sure to install the frontend dependencies first (`npm install`), then start the local dev server (`npm run dev`):
 
 ```bash
-uv run dev
+cd demo
+npm install
+npm run dev
 ```
 
-### Direct Python Run
+Open your browser at `http://localhost:5173` to explore:
+- Quick dining presets (`S001`–`S030`) and manual priority sliders (Cost, Best-seller, Healthy, Culinary Experience)
+- Restaurant full menu viewer (39 dishes with ingredients, allergens, calories, satiety, and availability)
+- 2x2 recommended menu scenarios (Option A: Balanced TOPSIS, Option B: Cost-Optimized, Option C: Culinary Experience, Option D: Best-seller)
+- Interactive 4-axis Radar (Spider) chart and detailed TOPSIS ranking table
+
+### 2. CLI Prototype Demo & Data Pipeline (Python in `modules/`)
+Run the Python CLI demo directly:
 ```bash
-python demo/main.py
+python modules/main.py
+```
+
+Regenerate the processed datasets from `data/raw/`:
+```bash
+python modules/modules/data_pipeline.py
 ```
 
 <!-- ### Expected Output Preview
@@ -146,12 +189,13 @@ For convenience, routine workflows are wrapped in a cross-platform `Makefile`:
 
 | Target | Command | Purpose |
 |---|---|---|
-| `make install` | `uv pip install -e . -c constraints.txt` | Install project and dependencies |
-| `make dev` | `uv run dev` | Launch the demo prototype via `uv` |
-| `make run` | `python demo/main.py` | Run demo script via Python directly |
+| `make install` | `uv pip install -e . -c constraints.txt` | Install Python project and dependencies |
+| `make dev` | `uv run dev` | Launch the Python CLI demo via `uv` |
+| `make web` | `cd demo && npm run dev` | Launch the interactive React + Vite web demo |
+| `make run` | `python modules/main.py` | Run Python CLI demo script directly |
 | `make test` | `pytest tests/` | Execute automated test suite |
-| `make lint` | `ruff check demo/` | Run code quality checks |
-| `make format` | `ruff format demo/` | Auto-format Python code |
+| `make lint` | `ruff check modules/` | Run code quality checks |
+| `make format` | `ruff format modules/` | Auto-format Python code |
 | `make report` | `cd report && xelatex ...` | Compile the XeLaTeX academic report |
 | `make clean` | `find ...` | Remove Python cache artifacts |
 | `make clean-report` | `rm report/*.aux ...` | Remove temporary LaTeX compile artifacts |

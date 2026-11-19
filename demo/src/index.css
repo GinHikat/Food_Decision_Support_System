@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Be Vietnam Pro", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+:root {
+  --bg-canvas: #f4f8f5;
+  --bg-surface: #ffffff;
+  --bg-subtle: #eaf2ec;
+  --ink-primary: #13241c;
+  --ink-secondary: #475c51;
+  --ink-muted: #6b8075;
+  --border-hairline: #dce7df;
+  --accent-a: #1e6f50;
+  --accent-b: #d97724;
+  --accent-c: #1d6a8a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-canvas);
+  color: var(--ink-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: #cde8d9;
+  color: #13241c;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Fresh Organic botanical slider */
+input[type="range"].dss-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 5px;
+  border-radius: 999px;
+  background: #d5e3d9;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="range"].dss-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #1e6f50;
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 4px rgba(19, 36, 28, 0.25);
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+input[type="range"].dss-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  background: #16593f;
+}
+
+input[type="range"].dss-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #1e6f50;
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 4px rgba(19, 36, 28, 0.25);
+  cursor: pointer;
+}
+
+/* Smooth Radar polygon transition */
+.radar-polygon {
+  transition: opacity 0.25s ease, fill-opacity 0.25s ease;
+}
+
+/* Clean light scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #eaf2ec;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #bfd3c5;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #96b4a0;
+}

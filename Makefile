@@ -7,6 +7,7 @@ help:
 	@echo "Available commands:"
 	@echo "  make install       Install dependencies using constraints.txt"
 	@echo "  make dev           Run interactive demo via uv (uv run dev)"
+	@echo "  make web           Run React + Vite interactive web demo"
 	@echo "  make run           Run demo directly with python (python demo/main.py)"
 	@echo "  make test          Run pytest suite"
 	@echo "  make lint          Run linter check (ruff)"
@@ -21,6 +22,9 @@ install:
 
 dev:
 	$(UV) run dev
+
+web:
+	cd frontend && npm run dev
 
 run:
 	$(PYTHON) demo/main.py

@@ -18,14 +18,14 @@ from demo.modules.dss_model import calculate_dss_scores
 
 
 def load_sample_data(csv_path: Path):
-    """Load sample menu dataset from CSV."""
+    """Load menu dataset from CSV (supports both master and legacy schemas)."""
     items = []
     with open(csv_path, mode="r", encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for row in reader:
             items.append({
                 "id": int(row["id"]),
-                "item_name": row["item_name"],
+                "item_name": row.get("dish_name") or row.get("item_name"),
                 "category": row["category"],
                 "cost_price": float(row["cost_price"]),
                 "selling_price": float(row["selling_price"]),
@@ -67,14 +67,14 @@ def display_results(results, scored_items):
     print(f"  * Dogs       (Low Margin,  Low Demand) : {quadrant_counts['Dog']}")
     print("\n" + "=" * 95)
 
-    header = f"{'Item Name':<28} {'Cat':<10} {'Price':>7} {'Margin':>7} {'Sold':>6} {'Mix%':>6} {'Class':<10} {'Score':>6}"
+    header = f"{'Item Name':<28} {'Cat':<12} {'Price':>7} {'Margin':>7} {'Sold':>6} {'Mix%':>6} {'Class':<10} {'Score':>6}"
     print(header)
-    print("-" * 95)
+    print("-" * 97)
 
     for item in scored_items:
         print(
             f"{item['item_name']:<28} "
-            f"{item['category']:<10} "
+            f"{item['category']:<12} "
             f"${item['selling_price']:>6.2f} "
             f"${item['margin']:>6.2f} "
             f"{item['units_sold']:>6} "
@@ -82,7 +82,7 @@ def display_results(results, scored_items):
             f"{item['classification']:<10} "
             f"{item['dss_score']:>6.1f}"
         )
-    print("=" * 95)
+    print("=" * 97)
 
     print("\n[2] PRESCRIPTIVE DECISION RECOMMENDATIONS")
     for category in ["Star", "Plowhorse", "Puzzle", "Dog"]:
@@ -94,14 +94,16 @@ def display_results(results, scored_items):
                 print(f"    Action: {item['recommended_action']}")
 
     print("\n" + "=" * 80)
-    print("Demo completed successfully. Customize data at data/menu_items.csv")
+    print("Demo completed successfully. Dataset: data/processed/menu_dss_master.csv")
     print("=" * 80)
 
 
 def main():
     """Main execution function."""
     print_banner()
-    data_path = PROJECT_ROOT / "data" / "menu_items.csv"
+    data_path = PROJECT_ROOT / "data" / "processed" / "menu_dss_master.csv"
+    if not data_path.exists():
+        data_path = PROJECT_ROOT / "data" / "raw" / "menu_items.csv"
     if not data_path.exists():
         print(f"Error: Dataset not found at {data_path}", file=sys.stderr)
         sys.exit(1)

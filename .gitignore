@@ -2,9 +2,16 @@
 .env
 .env.local
 
-# Data (track sample files and structure, ignore large raw dumps)
+# Data (track sample/processed master files, ignore large raw dumps)
 data/*
 !data/.gitkeep
+!data/processed/
+data/processed/*
+!data/processed/menu_dss_master.csv
+!data/processed/customers.csv
+!data/processed/dining_sessions.csv
+!data/processed/customer_sessions_master.csv
+!data/processed/data_desc.md
 
 # Python artifacts
 __pycache__/
@@ -41,3 +48,8 @@ report/*.synctex.gz
 report/*.fls
 report/*.fdb_latexmk
 
+impeccable/
+
+# Demo Frontend (React + Vite)
+demo/node_modules/
+demo/dist/
